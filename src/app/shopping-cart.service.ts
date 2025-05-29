@@ -7,6 +7,7 @@ import { CartItem } from './cart-item';
 export class ShoppingCartService {
   private storageKey = 'shoppingCart';
   private cartItems: CartItem[] = [];
+  
 
   constructor() {
     this.loadCart();
@@ -26,22 +27,42 @@ export class ShoppingCartService {
     this.saveCart();
   }
 
+  CalculateSubtotal()
+  {    
+      this.loadCart();
+      
+      let subtotal: number = 0;
+      
+      for(let item of this.cartItems)
+      {
+        if (item.price && item.quantity)
+          subtotal = subtotal + item.price * item.quantity;
+      }
+
+      return subtotal;
+  }
+
   CountCartItem()
   {
-      return this.cartItems.length;
+    this.loadCart();
+    
+    return this.cartItems.length;
   }
 
   removeItem(item: CartItem): void {
-    this.cartItems = this.cartItems.filter(i => i.name !== item.name);
+    this.cartItems = this.cartItems.filter(i => i.id !== item.id);
     this.saveCart();
   }
 
   updateQuantity(item: CartItem, quantity: number): void {
-    const found = this.cartItems.find(i => i.name === item.name);
+    const found = this.cartItems.find(i => i.id === item.id);
     if (found) {
       found.quantity = quantity;
-      if (found.quantity <= 0) this.removeItem(found);
-      else this.saveCart();
+      
+      if (found.quantity <= 0) 
+        this.removeItem(found);
+      else 
+        this.saveCart();
     }
   }
 

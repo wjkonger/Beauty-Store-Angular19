@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { CartItem } from '../cart-item';
+import { ShoppingCartService } from '../shopping-cart.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -8,41 +10,54 @@ import { Component } from '@angular/core';
   styleUrl: './shopping-cart.component.css'
 })
 export class ShoppingCartComponent {
-  cartItems = [
+  cartItems: CartItem[] = [];
+  subtotal: number = 0;
+  shipping: number = 0;
+  tax: number = 0;
+  total: number = 0;
+
+  constructor(private oShoppingCartService: ShoppingCartService)
+  {
+     this.refreshShoppingCart();
+  }
+
+  
+
+  
+
+  increaseQty(item: CartItem) {
+    if (item.quantity && item.quantity > 0)
     {
-      name: 'Product 1',
-      description: 'High-quality beauty product',
-      price: 29.99,
-      quantity: 1,
-      image: 'assets/product1.jpg'
-    },
-    {
-      name: 'Product 2',
-      description: 'Another great product',
-      price: 49.99,
-      quantity: 2,
-      image: 'assets/product2.jpg'
+      this.oShoppingCartService.updateQuantity(item, ++item.quantity);
     }
-  ];
 
-  get subtotal(): number {
-    return this.cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    this.refreshShoppingCart();
+    
   }
 
-  get total(): number {
-    return this.subtotal; // Add tax/shipping if needed
+  decreaseQty(item: CartItem) {
+    if (item.quantity && item.quantity > 0)
+    {
+      this.oShoppingCartService.updateQuantity(item, --item.quantity);
+    }
+
+    this.refreshShoppingCart();
+    
   }
 
-  increaseQty(item: any) {
-    item.quantity++;
+  refreshShoppingCart()
+  {
+    this.cartItems = this.oShoppingCartService.getItems();
+    this.subtotal = this.oShoppingCartService.CalculateSubtotal();
+    this.shipping = this.subtotal * 0.06;
+    this.tax = (this.subtotal + this.shipping) * 0.13;
+    this.total = this.subtotal + this.shipping + this.tax;
+    
+
   }
 
-  decreaseQty(item: any) {
-    if (item.quantity > 1) item.quantity--;
+  removeItem(item: CartItem) {
+    this.oShoppingCartService.removeItem(item);
+    this.refreshShoppingCart();
   }
-
-  removeItem(item: any) {
-    this.cartItems = this.cartItems.filter(i => i !== item);
-  }
-
 }

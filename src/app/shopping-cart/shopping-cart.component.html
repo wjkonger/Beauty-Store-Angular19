@@ -13,7 +13,7 @@
           <div class="col-5 col-md-6">
             <h5 class="mb-1">{{ item.name }}</h5>
             <p class="text-muted small mb-1">{{ item.description }}</p>
-            <p class="fw-semibold mb-0">${{ item.price.toFixed(2) }}</p>
+            <p class="fw-semibold mb-0">{{ item.price | currency }}</p>
           </div>
           <div class="col-4 col-md-4 d-flex flex-column align-items-center">
             <div class="input-group input-group-sm mb-2" style="width: 120px;">
@@ -37,15 +37,19 @@
         <ul class="list-group list-group-flush mb-3">
           <li class="list-group-item d-flex justify-content-between">
             <span>Subtotal</span>
-            <strong>${{ subtotal.toFixed(2) }}</strong>
+            <strong>{{ subtotal | currency }}</strong>
           </li>
           <li class="list-group-item d-flex justify-content-between">
             <span>Shipping</span>
-            <span class="text-muted">Free</span>
+            <span class="text-muted">{{ shipping | currency }}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Tax</span>
+            <span class="text-muted">{{ tax | currency }}</span>
           </li>
           <li class="list-group-item d-flex justify-content-between fw-bold">
             <span>Total</span>
-            <span>${{ total.toFixed(2) }}</span>
+            <span>{{ total | currency }}</span>
           </li>
         </ul>
         <button class="btn btn-primary w-100" [disabled]="cartItems.length === 0">Proceed to Checkout</button>
