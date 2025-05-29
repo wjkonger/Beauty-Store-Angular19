@@ -9,7 +9,7 @@ import { HomeComponent } from './home/home.component';
 export const routes: Routes = [
     {path: "", component: HomeComponent},
     {path: "home", component: HomeComponent},
-    {path: "product-list", component: ProductListComponent},
+    {path: "product-list/:term", component: ProductListComponent},
     {path: "product-detail/:id", loadComponent: ()=>import("./product-detail/product-detail.component").then(c=>c.ProductDetailComponent)},
     {path: "shopping-cart", loadComponent: ()=>import("./shopping-cart/shopping-cart.component").then(c=>c.ShoppingCartComponent)},
     {path: "about", component: AboutComponent},
