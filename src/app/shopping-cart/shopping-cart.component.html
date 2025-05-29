@@ -52,7 +52,7 @@
             <span>{{ total | currency }}</span>
           </li>
         </ul>
-        <button class="btn btn-primary w-100" [disabled]="cartItems.length === 0">Proceed to Checkout</button>
+        <button class="btn btn-primary w-100" routerLink="../check-out" routerLinkActive="activeLink" [disabled]="cartItems.length === 0">Proceed to Checkout</button>
       </div>
 
     </div>

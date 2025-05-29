@@ -12,6 +12,7 @@ export const routes: Routes = [
     {path: "product-list/:term", component: ProductListComponent},
     {path: "product-detail/:id", loadComponent: ()=>import("./product-detail/product-detail.component").then(c=>c.ProductDetailComponent)},
     {path: "shopping-cart", loadComponent: ()=>import("./shopping-cart/shopping-cart.component").then(c=>c.ShoppingCartComponent)},
+    {path: "check-out", loadComponent: ()=>import("./check-out/check-out.component").then(c=>c.CheckOutComponent)},
     {path: "about", component: AboutComponent},
     {path: "contact", component: ContactComponent},
     {path: "**", component: ProductListComponent}
