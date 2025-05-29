@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RoundNumberPipe } from "../round-number.pipe";
+import { CartItem } from '../cart-item';
+import { ShoppingCartService } from '../shopping-cart.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -11,10 +13,12 @@ import { RoundNumberPipe } from "../round-number.pipe";
   styleUrl: './product-detail.component.css'
 })
 export class ProductDetailComponent implements OnInit {
+
   productId: string = "";
   oProduct: any;
+  oCartItem: CartItem = {};
 
-  constructor(private oRoute : ActivatedRoute, private oProductService : ProductService)
+  constructor(private oRoute : ActivatedRoute, private oProductService : ProductService, private oShoppingCartService: ShoppingCartService, private oRouter: Router)
   {
       this.oRoute.paramMap.subscribe(params => {
       this.productId = params.get('id') as string;
@@ -26,6 +30,20 @@ export class ProductDetailComponent implements OnInit {
     this.oProductService.GetProduct(this.productId).subscribe(response=>{
        this.oProduct = response;
     })
+  }
+
+  AddCartItem(oProduct: any) {
+    this.oCartItem.id = oProduct.id;
+    this.oCartItem.name = oProduct.title;
+    this.oCartItem.description = oProduct.description;
+    this.oCartItem.price = oProduct.price;
+    this.oCartItem.quantity = 1;
+    this.oCartItem.image = oProduct.thumbnail;
+    
+    this.oShoppingCartService.addItem(this.oCartItem);
+  
+    this.oRouter.navigateByUrl("shopping-cart");
+    
   }
 
 }
