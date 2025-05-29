@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CartItem } from './cart-item';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +49,14 @@ export class ShoppingCartService {
     
     return this.cartItems.length;
   }
+
+  private methodCallSource = new Subject<void>();
+  methodCall$ = this.methodCallSource.asObservable();
+
+  callMethod() {
+    this.methodCallSource.next();
+  }
+
 
   removeItem(item: CartItem): void {
     this.cartItems = this.cartItems.filter(i => i.id !== item.id);

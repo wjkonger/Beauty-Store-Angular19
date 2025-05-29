@@ -53,6 +53,7 @@ export class ShoppingCartComponent {
     this.tax = (this.subtotal + this.shipping) * 0.13;
     this.total = this.subtotal + this.shipping + this.tax;
     
+    this.oShoppingCartService.callMethod();
 
   }
 
