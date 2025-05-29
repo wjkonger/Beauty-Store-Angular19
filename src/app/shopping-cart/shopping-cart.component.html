@@ -1,0 +1,57 @@
+<div class="container my-5">
+  <h2 class="mb-4 text-center">Shopping Cart</h2>
+
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+
+      <!-- Cart Items -->
+      <div *ngFor="let item of cartItems" class="card mb-3 shadow-sm">
+        <div class="row g-3 align-items-center p-3">
+          <div class="col-3 col-md-2">
+            <img [src]="item.image" alt="{{ item.name }}" class="img-fluid rounded" />
+          </div>
+          <div class="col-5 col-md-6">
+            <h5 class="mb-1">{{ item.name }}</h5>
+            <p class="text-muted small mb-1">{{ item.description }}</p>
+            <p class="fw-semibold mb-0">${{ item.price.toFixed(2) }}</p>
+          </div>
+          <div class="col-4 col-md-4 d-flex flex-column align-items-center">
+            <div class="input-group input-group-sm mb-2" style="width: 120px;">
+              <button class="btn btn-outline-secondary" (click)="decreaseQty(item)" type="button">−</button>
+              <input type="text" class="form-control text-center" [value]="item.quantity" readonly />
+              <button class="btn btn-outline-secondary" (click)="increaseQty(item)" type="button">+</button>
+            </div>
+            <button class="btn btn-link text-danger p-0" (click)="removeItem(item)">Remove</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- If cart empty -->
+      <div *ngIf="cartItems.length === 0" class="text-center text-muted py-5">
+        Your cart is empty.
+      </div>
+
+      <!-- Cart Summary -->
+      <div class="card shadow-sm mt-4 p-4">
+        <h4 class="mb-3">Order Summary</h4>
+        <ul class="list-group list-group-flush mb-3">
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Subtotal</span>
+            <strong>${{ subtotal.toFixed(2) }}</strong>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Shipping</span>
+            <span class="text-muted">Free</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between fw-bold">
+            <span>Total</span>
+            <span>${{ total.toFixed(2) }}</span>
+          </li>
+        </ul>
+        <button class="btn btn-primary w-100" [disabled]="cartItems.length === 0">Proceed to Checkout</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+

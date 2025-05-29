@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
     <!-- Brand -->
-    <a class="navbar-brand" routerLink="product-list" routerLinkActive="activeLink">BeautyStore</a>
+    <a class="navbar-brand" routerLink="home" routerLinkActive="activeLink">BeautyStore</a>
 
     <!-- Toggler for mobile -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -17,21 +17,6 @@
         <li class="nav-item">
           <a class="nav-link"  routerLink="product-list" routerLinkActive="activeLink">Product List</a>
         </li>
-
-        <!-- Products Dropdown
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown"
-             role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Categories
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
-            <li><a class="dropdown-item" href="#">Makeup</a></li>
-            <li><a class="dropdown-item" href="#">Skincare</a></li>
-            <li><a class="dropdown-item" href="#">Fragrances</a></li>
-            <li><a class="dropdown-item" href="#">Hair</a></li>
-          </ul>
-        </li> -->
-
         <!-- About -->
         <li class="nav-item">
           <a class="nav-link"  routerLink="about" routerLinkActive="activeLink">About</a>
@@ -52,7 +37,7 @@
       </form>
 
       <!-- Cart Icon -->
-      <a href="#" class="btn btn-outline-light position-relative">
+      <a routerLink="shopping-cart" routerLinkActive="activeLink" class="btn btn-outline-light position-relative">
         <i class="fas fa-shopping-cart"></i>
         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
           3
