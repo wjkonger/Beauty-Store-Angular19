@@ -15,11 +15,21 @@ export class ProductService {
 
   GetListOfProduct()
   {
-    return this.oHttpClient.get(this.apiUrl);
+    return this.RetrieveDataByAPI(this.apiUrl);   
+  }
+
+  SearchProducts(term: string)
+  {
+     return this.RetrieveDataByAPI(this.apiUrl + "/search?q=" + term);   
   }
 
   GetProduct(id: string)
   {
-     return this.oHttpClient.get(this.apiUrl + "/" + id);
+    return this.RetrieveDataByAPI(this.apiUrl + "/" + id);    
+  }
+
+  private RetrieveDataByAPI(url: string)
+  {
+     return this.oHttpClient.get(url);
   }
 }

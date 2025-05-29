@@ -20,9 +20,8 @@ export class ProductDetailComponent implements OnInit {
 
   constructor(private oRoute : ActivatedRoute, private oProductService : ProductService, private oShoppingCartService: ShoppingCartService, private oRouter: Router)
   {
-      this.oRoute.paramMap.subscribe(params => {
+    this.oRoute.paramMap.subscribe(params => {
       this.productId = params.get('id') as string;
-      
     });
   }
 

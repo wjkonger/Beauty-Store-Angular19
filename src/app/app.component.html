@@ -29,12 +29,13 @@
       </ul>
 
       <!-- Search Form -->
-      <form class="d-flex me-3" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchTerm">
+        <div class="d-flex me-3">
+        <input class="form-control me-2"  placeholder="Search" [(ngModel)]="searchTerm">
         <button class="btn btn-outline-light" (click)="Search(searchTerm)">
           <i class="fas fa-search"></i>
         </button>
-      </form>
+        </div>
+     
 
       <!-- Cart Icon -->
       <a routerLink="shopping-cart" routerLinkActive="activeLink" class="btn btn-outline-light position-relative">

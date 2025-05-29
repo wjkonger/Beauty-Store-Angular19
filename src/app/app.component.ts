@@ -23,11 +23,11 @@ export class AppComponent {
 
   Search(term: string) {
     let path: string = "product-list";
-    term = this.searchTerm;
+
     
     if (term && term.trim().length > 0)
     {
-      path += "/" + term;
+      path += "/" + term.trim();
     }  
 
     this.oRouter.navigateByUrl(path);
