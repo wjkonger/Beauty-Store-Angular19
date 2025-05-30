@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -9,5 +10,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 
 export class HomeComponent {
-
+  angularVersion : string = "";
+  constructor(){
+    this.angularVersion = environment.angularVersion;
+  }
+  
 }
