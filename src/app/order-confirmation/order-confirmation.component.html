@@ -1,0 +1,73 @@
+<div class="container mt-5">
+  <div class="text-center">
+    <h2 class="text-success">Thank you for your order!</h2>
+    <p class="lead">We've received your order and it’s being processed.</p>
+  </div>
+
+  <hr class="my-4" />
+
+  <!-- Shipping Info -->
+  <div class="mb-5">
+    <h4>Shipping Information</h4>
+    <ul class="list-group">
+      <li class="list-group-item"><strong>Name:</strong> {{ order.firstName + " " + order.lastName }}</li>
+      <li class="list-group-item"><strong>Email:</strong> {{ order.email }}</li>
+      <li class="list-group-item">
+        <strong>Address:</strong><br />
+        {{ order.shippingAddress?.streetNum }} {{ order.shippingAddress?.street }}<br />
+        {{ order.shippingAddress?.city }}, {{ order.shippingAddress?.province }}<br />
+        {{ order.shippingAddress?.postalCode }}
+      </li>
+    </ul>
+    
+  </div>
+
+  <!-- Order Summary -->
+  <div>
+    <h4>Order Summary</h4>
+    <table class="table table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>Item</th>
+          <th class="text-end">Qty</th>
+          <th class="text-end">Price</th>
+          <th class="text-end">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cartItems">
+          <td>{{ item.name }}</td>
+          <td class="text-end">{{ item.quantity }}</td>
+          <td class="text-end">{{ item.price | currency }}</td>
+          @if (item.price && item.quantity)
+          {
+            <td class="text-end">{{ item.price * item.quantity | currency }}</td>
+          }         
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3" class="text-end"><strong>Subtotal</strong></td>
+          <td class="text-end">{{ subTotal | currency }}</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="text-end"><strong>Tax ({{ 0.06 * 100 }}%)</strong></td>
+          <td class="text-end">{{ tax | currency }}</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="text-end"><strong>Shipping</strong></td>
+          <td class="text-end">{{ shipping | currency }}</td>
+        </tr>
+        <tr class="table-primary">
+          <td colspan="3" class="text-end"><strong>Total</strong></td>
+          <td class="text-end"><strong>{{ total | currency }}</strong></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div class="text-center mt-5">
+    <a (click)="ContinueShopping()" class="btn btn-outline-primary">Continue Shopping</a>
+  </div>
+</div>
+

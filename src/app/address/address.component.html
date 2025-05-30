@@ -1,0 +1,29 @@
+<div>
+<div class="col-3">
+<label class="form-label">Street #</label>
+<input type="text" class="form-control rounded" required>
+</div>
+<div class="col-9">
+<label class="form-label">Street</label>
+<input type="text" class="form-control rounded" required>
+</div>
+<div class="col-md-6">
+<label class="form-label">Province</label>
+<select class="form-select rounded" required>
+    <option>Choose...</option>
+    @for (province of provinces; track province)
+    {
+        <option [value]="province.key">{{ province.value }}</option>  
+    }
+</select>
+</div> 
+<div class="col-md-3">
+<label class="form-label">City</label>
+<input type="text" class="form-control rounded" required maxlength="20">
+</div>
+<div class="col-md-3">
+<label class="form-label">Postal Code</label>
+<input type="text" class="form-control rounded" required maxlength="7">
+</div>
+</div>
+
