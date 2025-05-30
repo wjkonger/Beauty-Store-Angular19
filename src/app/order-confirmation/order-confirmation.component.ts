@@ -42,7 +42,7 @@ export class OrderConfirmationComponent implements OnInit {
   refreshCheckout()
   {
     this.cartItems = this.oShoppingCartService.getItems();
-    this.subTotal = this.oShoppingCartService.CalculateSubtotal();
+    this.subTotal = this.oShoppingCartService.calculateSubtotal();
     this.shipping = this.subTotal * 0.06;
     this.tax = (this.subTotal + this.shipping) * 0.13;
     this.total = this.subTotal + this.shipping + this.tax;

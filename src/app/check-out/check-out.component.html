@@ -10,28 +10,28 @@
             <h4 class="mb-3">Shipping Address</h4>
             <div class="row g-3">
               <div class="col-sm-6">
-                <label class="form-label">First Name</label>
-                <input type="text" class="form-control rounded" required maxlength="40" [(ngModel)]="order.firstName" name="txtFirstName" >
+                <label class="form-label" for="txtFirstName" >First Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control rounded" required maxlength="40" [(ngModel)]="order.firstName" name="txtFirstName" id="txtFirstName" >
               </div>
               <div class="col-sm-6">
-                <label class="form-label">Last Name</label>
-                <input type="text" class="form-control rounded" required maxlength="40" [(ngModel)]="order.lastName" name="txtLastName">
+                <label class="form-label" for="txtLastName">Last Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control rounded" required maxlength="40" [(ngModel)]="order.lastName" name="txtLastName" id="txtLastName">
               </div>
               <div class="col-12">
-                <label class="form-label">Email</label>
-                <input type="email" class="form-control rounded" maxlength="40" [(ngModel)]="order.email" name="txtEmail">
+                <label class="form-label" for="txtEmail">Email <span class="text-danger">*</span></label>
+                <input type="email" class="form-control rounded" maxlength="40" [(ngModel)]="order.email" name="txtEmail" id="txtEmail">
               </div>
               <div class="col-3">
-                <label class="form-label">Street #</label>
-                <input type="text" class="form-control rounded" required maxlength="10" [(ngModel)]="shippingAddress.streetNum" name="txtstreetNum">
+                <label class="form-label" for="txtStreetNum">Street #</label>
+                <input type="text" class="form-control rounded" maxlength="10" [(ngModel)]="shippingAddress.streetNum" name="txtStreetNum" id="txtStreetNum">
               </div>
               <div class="col-9">
-                <label class="form-label">Street</label>
-                <input type="text" class="form-control rounded" required maxlength="40" [(ngModel)]="shippingAddress.street" name="txtstreet">
+                <label class="form-label" for="txtStreet">Street <span class="text-danger">*</span></label>
+                <input type="text" class="form-control rounded" required maxlength="40" [(ngModel)]="shippingAddress.street" name="txtStreet" id="txtStreet">
               </div>
               <div class="col-md-6">
-                <label class="form-label">Province</label>
-                <select class="form-select rounded" required [(ngModel)]="shippingAddress.province" name="ddlProvince">
+                <label class="form-label" for="ddlProvince">Province <span class="text-danger">*</span></label>
+                <select class="form-select rounded" required [(ngModel)]="shippingAddress.province" name="ddlProvince" id="ddlProvince">
                     <option>Choose...</option>
                     @for (province of provinces; track province)
                     {
@@ -40,12 +40,12 @@
                 </select>
               </div> 
               <div class="col-md-3">
-                <label class="form-label">City</label>
-                <input type="text" class="form-control rounded" required maxlength="20" [(ngModel)]="shippingAddress.city" name="txtCity">
+                <label class="form-label" for="txtCity">City <span class="text-danger">*</span></label>
+                <input type="text" class="form-control rounded" required maxlength="20" [(ngModel)]="shippingAddress.city" name="txtCity" id="txtCity">
               </div>
               <div class="col-md-3">
-                <label class="form-label">Postal Code</label>
-                <input type="text" class="form-control rounded" required maxlength="7" [(ngModel)]="shippingAddress.postalCode" name="txtPostalCode">
+                <label class="form-label" for="txtPostalCode">Postal Code <span class="text-danger">*</span></label>
+                <input type="text" class="form-control rounded" required maxlength="7" [(ngModel)]="shippingAddress.postalCode" name="txtPostalCode" id="txtPostalCode">
               </div>
             </div>     
             <hr class="my-4">

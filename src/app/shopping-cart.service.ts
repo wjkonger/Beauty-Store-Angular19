@@ -28,7 +28,7 @@ export class ShoppingCartService {
     this.saveCart();
   }
 
-  CalculateSubtotal()
+  calculateSubtotal()
   {    
       this.loadCart();
       
@@ -43,7 +43,7 @@ export class ShoppingCartService {
       return subtotal;
   }
 
-  CountCartItem()
+  countCartItem()
   {
     this.loadCart();
     
