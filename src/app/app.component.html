@@ -30,7 +30,7 @@
 
       <!-- Search Form -->
         <div class="d-flex me-3">
-        <input class="form-control me-2"  placeholder="Search" [(ngModel)]="searchTerm">
+        <input class="form-control me-2"  placeholder="Search" [(ngModel)]="searchTerm" maxlength="30">
         <button class="btn btn-outline-light" (click)="Search(searchTerm)">
           <i class="fas fa-search"></i>
         </button>
