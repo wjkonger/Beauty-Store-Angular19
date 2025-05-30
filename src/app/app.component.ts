@@ -38,6 +38,6 @@ export class AppComponent {
 
   CountNumOfCartItem()
   {
-    this.numOfCartItem = this.oShoppingCartService.CountCartItem();
+    this.numOfCartItem = this.oShoppingCartService.countCartItem();
   } 
 }

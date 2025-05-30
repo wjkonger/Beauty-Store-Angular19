@@ -28,7 +28,7 @@
 
       <!-- If cart empty -->
       <div *ngIf="cartItems.length === 0" class="text-center text-muted py-5">
-        Your cart is empty.
+        <h3 class="text-primary">Your cart is empty.</h3>
       </div>
 
       <!-- Cart Summary -->
@@ -52,7 +52,7 @@
             <span>{{ total | currency }}</span>
           </li>
         </ul>
-        <button class="btn btn-primary w-100" [disabled]="cartItems.length === 0">Proceed to Checkout</button>
+        <button class="btn btn-primary w-100" routerLink="../check-out" routerLinkActive="activeLink" [disabled]="cartItems.length === 0">Proceed to Checkout</button>
       </div>
 
     </div>

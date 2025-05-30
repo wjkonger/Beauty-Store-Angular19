@@ -1,0 +1,100 @@
+<div class="container my-5">
+  <h2 class="mb-4">Checkout</h2>
+
+  <div class="row">
+    <!-- Main Form Card -->
+    <div class="col-lg-8">
+      <div class="card shadow-sm rounded-3">
+        <div class="card-body p-4">
+          <form #checkoutForm="ngForm" (ngSubmit)="PlaceOrder()">
+            <h4 class="mb-3">Shipping Address</h4>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label class="form-label" for="txtFirstName" >First Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control rounded" required maxlength="40" [(ngModel)]="order.firstName" name="txtFirstName" id="txtFirstName" >
+              </div>
+              <div class="col-sm-6">
+                <label class="form-label" for="txtLastName">Last Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control rounded" required maxlength="40" [(ngModel)]="order.lastName" name="txtLastName" id="txtLastName">
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="txtEmail">Email <span class="text-danger">*</span></label>
+                <input type="email" class="form-control rounded" maxlength="40" [(ngModel)]="order.email" name="txtEmail" id="txtEmail">
+              </div>
+              <div class="col-3">
+                <label class="form-label" for="txtStreetNum">Street #</label>
+                <input type="text" class="form-control rounded" maxlength="10" [(ngModel)]="shippingAddress.streetNum" name="txtStreetNum" id="txtStreetNum">
+              </div>
+              <div class="col-9">
+                <label class="form-label" for="txtStreet">Street <span class="text-danger">*</span></label>
+                <input type="text" class="form-control rounded" required maxlength="40" [(ngModel)]="shippingAddress.street" name="txtStreet" id="txtStreet">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="ddlProvince">Province <span class="text-danger">*</span></label>
+                <select class="form-select rounded" required [(ngModel)]="shippingAddress.province" name="ddlProvince" id="ddlProvince">
+                    <option>Choose...</option>
+                    @for (province of provinces; track province)
+                    {
+                        <option [value]="province.key">{{ province.value }}</option>  
+                    }
+                </select>
+              </div> 
+              <div class="col-md-3">
+                <label class="form-label" for="txtCity">City <span class="text-danger">*</span></label>
+                <input type="text" class="form-control rounded" required maxlength="20" [(ngModel)]="shippingAddress.city" name="txtCity" id="txtCity">
+              </div>
+              <div class="col-md-3">
+                <label class="form-label" for="txtPostalCode">Postal Code <span class="text-danger">*</span></label>
+                <input type="text" class="form-control rounded" required maxlength="7" [(ngModel)]="shippingAddress.postalCode" name="txtPostalCode" id="txtPostalCode">
+              </div>
+            </div>     
+            <hr class="my-4">
+            <button class="btn btn-primary w-100 py-2 rounded-3" type="submit" [disabled]="checkoutForm.invalid">Place Order</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart Summary Card -->
+    <div class="col-lg-4 mt-4 mt-lg-0">
+      <div class="card shadow-sm rounded-3">
+        <div class="card-body p-4">
+          <h5 class="card-title text-primary">Your Cart</h5>
+          <ul class="list-group list-group-flush">
+            @for (item of cartItems; track item)
+            {
+               <li class="list-group-item d-flex justify-content-between">
+                    <div>
+                        <strong>{{ item.name }}</strong><br>
+                        <small class="text-muted">Qty: {{ item.quantity }}</small>
+                    </div>
+
+                    @if (item.price)
+                    {
+                       <span>{{ item.price  | currency }}</span>     
+                    }                    
+                </li>
+            }
+
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Subtotal</span>
+              <span>{{ subTotal | currency }}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Shipping</span>
+              <span>{{ shipping | currency }}</span>
+            </li>
+             <li class="list-group-item d-flex justify-content-between">
+              <span>Tax</span>
+              <span>{{ tax | currency }}</span>
+            </li>
+              <li class="list-group-item d-flex justify-content-between">
+              <strong>Total</strong>             
+              <strong>{{ total | currency }}</strong>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { CartItem } from '../cart-item';
+import { CartItem } from '../Interfaces/cart-item';
 import { ShoppingCartService } from '../shopping-cart.service';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-shopping-cart',
-  imports: [CommonModule],
+  imports: [CommonModule,RouterLink, RouterLinkActive],
   templateUrl: './shopping-cart.component.html',
   styleUrl: './shopping-cart.component.css'
 })
@@ -21,9 +22,6 @@ export class ShoppingCartComponent {
      this.refreshShoppingCart();
   }
 
-  
-
-  
 
   increaseQty(item: CartItem) {
     if (item.quantity && item.quantity > 0)
@@ -48,7 +46,7 @@ export class ShoppingCartComponent {
   refreshShoppingCart()
   {
     this.cartItems = this.oShoppingCartService.getItems();
-    this.subtotal = this.oShoppingCartService.CalculateSubtotal();
+    this.subtotal = this.oShoppingCartService.calculateSubtotal();
     this.shipping = this.subtotal * 0.06;
     this.tax = (this.subtotal + this.shipping) * 0.13;
     this.total = this.subtotal + this.shipping + this.tax;

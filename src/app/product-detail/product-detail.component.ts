@@ -3,7 +3,7 @@ import { ProductService } from '../product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RoundNumberPipe } from "../round-number.pipe";
-import { CartItem } from '../cart-item';
+import { CartItem } from '../Interfaces/cart-item';
 import { ShoppingCartService } from '../shopping-cart.service';
 
 @Component({
@@ -13,6 +13,7 @@ import { ShoppingCartService } from '../shopping-cart.service';
   styleUrl: './product-detail.component.css'
 })
 export class ProductDetailComponent implements OnInit {
+
 
   productId: string = "";
   oProduct: any;
@@ -32,6 +33,18 @@ export class ProductDetailComponent implements OnInit {
   }
 
   AddCartItem(oProduct: any) {
+    this.InsertCartItem(oProduct);
+    this.oRouter.navigateByUrl("shopping-cart");
+  }
+
+  BuyItNow(oProduct: any) {
+    this.InsertCartItem(oProduct);
+    this.oShoppingCartService.callMethod();
+    this.oRouter.navigateByUrl("check-out");
+  }
+
+  private InsertCartItem(oProduct: any)
+  {
     this.oCartItem.id = oProduct.id;
     this.oCartItem.name = oProduct.title;
     this.oCartItem.description = oProduct.description;
@@ -40,9 +53,6 @@ export class ProductDetailComponent implements OnInit {
     this.oCartItem.image = oProduct.thumbnail;
     
     this.oShoppingCartService.addItem(this.oCartItem);
-  
-    this.oRouter.navigateByUrl("shopping-cart");
-    
   }
 
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CartItem } from './cart-item';
+import { CartItem } from './Interfaces/cart-item';
 import { Subject } from 'rxjs';
 
 @Injectable({
@@ -28,7 +28,7 @@ export class ShoppingCartService {
     this.saveCart();
   }
 
-  CalculateSubtotal()
+  calculateSubtotal()
   {    
       this.loadCart();
       
@@ -43,7 +43,7 @@ export class ShoppingCartService {
       return subtotal;
   }
 
-  CountCartItem()
+  countCartItem()
   {
     this.loadCart();
     

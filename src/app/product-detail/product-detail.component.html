@@ -1,10 +1,13 @@
- <div class="container py-5">
+ <div class="container py-5" *ngIf="oProduct">
     <div class="row g-4">
       <!-- Product Image -->
       <div class="col-lg-5 col-md-6 col-sm-12 text-center">
-        <img [src]="oProduct.images[0]"
+        @if (oProduct && oProduct.images && oProduct.images[0])
+        {
+           <img [src]="oProduct.images[0]"
              [alt]="oProduct.title"
              class="product-img img-fluid rounded shadow-sm">
+        }
       </div>
 
       <!-- Product Details -->
@@ -36,8 +39,8 @@
       </ul>
 
       <div class="d-grid gap-2 d-md-block mt-4">
-        <button class="btn btn-primary btn-lg" (click)="AddCartItem(oProduct)">Add to Cart</button>
-        <button class="btn btn-outline-secondary btn-lg">Buy Now</button>
+        <button class="btn btn-primary btn-lg" (click)="AddCartItem(oProduct)">Add to Cart</button>&nbsp;
+        <button class="btn btn-outline-secondary btn-lg" (click)="BuyItNow(oProduct)">Buy Now</button>
       </div>
     </div>
   </div>
