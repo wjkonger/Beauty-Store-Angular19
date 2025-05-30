@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { CartItem } from '../cart-item';
+import { CartItem } from '../Interfaces/cart-item';
 import { ShoppingCartService } from '../shopping-cart.service';
 import { Router } from '@angular/router';
-import { IOrder } from '../iorder';
+import { IOrder } from '../Interfaces/iorder';
 
 @Component({
   selector: 'app-order-confirmation',

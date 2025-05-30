@@ -14,8 +14,8 @@ export const routes: Routes = [
     {path: "shopping-cart", loadComponent: ()=>import("./shopping-cart/shopping-cart.component").then(c=>c.ShoppingCartComponent)},
     {path: "check-out", loadComponent: ()=>import("./check-out/check-out.component").then(c=>c.CheckOutComponent)},
     {path: "order-confirmation", loadComponent: ()=>import("./order-confirmation/order-confirmation.component").then(c=>c.OrderConfirmationComponent)},
-    {path: "about", component: AboutComponent},
-    {path: "contact", component: ContactComponent},
+    {path: "about", loadComponent: ()=>import("./about/about.component").then(c=>c.AboutComponent)},
+    {path: "contact", loadComponent: ()=>import("./contact/contact.component").then(c=>c.ContactComponent)},
     {path: "**", component: ProductListComponent}
 
     

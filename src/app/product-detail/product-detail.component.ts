@@ -3,7 +3,7 @@ import { ProductService } from '../product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RoundNumberPipe } from "../round-number.pipe";
-import { CartItem } from '../cart-item';
+import { CartItem } from '../Interfaces/cart-item';
 import { ShoppingCartService } from '../shopping-cart.service';
 
 @Component({

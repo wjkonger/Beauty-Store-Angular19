@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { ShoppingCartService } from '../shopping-cart.service';
-import { CartItem } from '../cart-item';
+import { CartItem } from '../Interfaces/cart-item';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IOrder } from '../iorder';
-import { IAddress } from '../iaddress';
+import { IOrder } from '../Interfaces/iorder';
+import { IAddress } from '../Interfaces/iaddress';
 import { Router } from '@angular/router';
 
 @Component({
