@@ -1,5 +1,6 @@
 export const environment = {
     production: true,
     apiUrl: "https://dummyjson.com/products",
-    angularVersion: "19"
+    angularVersion: "19",
+    apiKey: "3Y6FIrLOtwze14skzXmi29IxyQ4A8w9lsLPPrVgZ9cw="
 }
